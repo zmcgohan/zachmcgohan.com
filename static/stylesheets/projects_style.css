@@ -1,0 +1,60 @@
+a .project_box {
+	color: #222;
+	-webkit-transition: background .4s, color .4s;
+	-moz-transition: background .4s, color .4s;
+	-o-transition: background .4s, color .4s;
+	transition: background .4s, color .4s;
+}
+a .project_box:visited {
+	color: #222;
+}
+a .project_box:hover {
+	color: #bb0000;
+	background: #e6e6e6;
+}
+a .project_box:active {
+	color: #bb0000;
+}
+.project_box {
+	display: inline-block;
+	float: left;
+	padding: 10px;
+	margin: 0 2% 8px 2%;
+	width: 96%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/* TODO Different image sizes are probably going to mess with the height of each box. Probably going to have to change this to a sized div with the image as as centered background. Overflow should be set to hidden */
+.project_box img {
+	width: 100%;
+}
+.project_box .title {
+	display: inline-block;
+	margin-top: 5px;
+	width: 100%;
+	font-weight: 500;
+	text-align: center;
+}
+.project_box .technologies {
+	display: inline-block;
+	margin-top: 5px;
+	width:100%;
+	font-size: .7em;
+	color: #666;
+	text-align: center;
+}
+
+@media (min-width: 500px) {
+	.project_box {
+		width: 48%;
+		margin: 0 1% 8px 1%;
+	}
+}
+
+@media (min-width: 800px) {
+	.project_box {
+		width: 32%;
+		margin: 0 0.5% 8px 0.5%;
+	}
+}

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Zach McGohan | {{ page_title }}</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link href='http://fonts.googleapis.com/css?family=Roboto:500,400italic,300,500italic,300italic,400' rel='stylesheet' type='text/css'>
+		<link rel="icon" type="image/png" href="/static/images/logo.png" />
+		<link rel="stylesheet" type="text/css" href="/static/stylesheets/main_style.css" />
+		{% for style in styles -%}
+		<link rel="stylesheet" type="text/css" href="{{ style }}" />
+		{%- endfor %}
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">
+				<span id="masthead">
+					<span id="logo_container"><a href="/"><img id="logo" alt="" src="/static/images/logo.png" /></a></span>
+					<span id="text_container">
+						<span id="name">Zach McGohan</span><br />
+						<span id="subtext">Developer; student; adventurer</span>
+					</span>
+				</span>
+				<span id="navigation">
+					<span id="header_links">
+						<a href="/" style="margin-left:0"{% if page_title == "About" %} class="current_link"{% endif %}>About</a>
+						<a href="/projects"{% if page_title == "Projects" %} class="current_link"{% endif %}>Projects</a>
+						<a href="/blog"{% if page_title == "Blog" %} class="current_link"{% endif %}>Blog</a>
+						<a href="mailto:mcgohan.4@osu.edu">Contact</a>
+					</span>
+				</span>
+			</div>
+			<div id="content">
+				<div id="construction_banner" style="text-align:center;font-weight:400;margin-bottom:10px;border-style:dashed;border-color:#bb0000;border-width:3px;background:#ffaaaa;">
+					<p>This website is under construction.</p>
+				</div>
+			{%- block content %}
+			{% endblock %}
+			</div>
+			<div id="footer">
+				<span id="copyright">
+					&copy; 2015 Zach McGohan<span id="email"> &#8212; <a href="mailto:mcgohan.4@osu.edu">mcgohan.4@osu.edu</a></span>
+				</span>
+				<span id="footer_links">
+					<a href="/" style="margin-left:0">About</a>
+					<a href="/projects">Projects</a>
+					<a href="/blog">Blog</a>
+					<a href="mailto:mcgohan.4@osu.edu">Contact</a>
+				</span>
+			</div>
+			{% for script in scripts -%}
+			<script src="{{ script }}"></script>
+			{%- endfor %}
+		</div>	
+	</body>
+</html>

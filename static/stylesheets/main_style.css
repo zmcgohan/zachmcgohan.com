@@ -1,0 +1,208 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', Helvetica, sans-serif;
+	color: #222;
+	background: #f2f2f2;
+}
+a {
+	color: #222;
+	text-decoration: none;
+	-webkit-transition: color .3s;
+	-moz-transition: color .3s;
+	-o-transition: color .3s;
+	transition: color .3s;
+}
+a:visited {
+	color: #222;
+	text-decoration: none;
+}
+a:hover {
+	color: #bb0000;
+}
+a:active {
+	color: #bb0000;
+}
+#container {
+	margin: 0 auto;
+	/*
+	width: 85%;
+	*/
+	width: 100%;
+	padding: 0 7.5%;
+	background: #fafafa;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	/*
+	padding: 0 1.5%;
+	*/
+}
+#header {
+	display: inline-block;
+	width: 100%;
+	padding: 20px 0;
+	margin-bottom: 10px;
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 0 0 1px 0;
+}
+#masthead {
+	display: inline-block;
+	width: 100%;
+	text-align: center;
+}
+#masthead #logo_container {
+	display: inline-block;
+	height: 40px;
+	width: 100%;
+	margin-bottom: 12px;
+}
+#masthead #logo {
+	height: 100%;
+	margin-right: 15px;
+}
+#masthead #text_container {
+	display: inline-block;
+}
+#masthead #subtext {
+	font-weight: 300;
+	font-size: .9em;
+}
+#masthead #name {
+	font-weight: 500;
+	font-size: 1.2em;
+}
+#navigation {
+	display: inline-block;
+	margin-top: 15px;
+	width: 100%;
+	text-align: center;
+}
+#header_links {
+	display: inline-block;
+}
+#header_links a {
+	margin-left: 8px;
+	font-size: .9em;
+}
+#content {
+	display: inline-block;
+	width: 100%;
+	text-align: left;
+	font-size: 1em;
+	font-weight: 300;
+}
+#content a, a.current_link {
+	color: #bb0000;
+}
+#content a:visited, a.current_link:visited {
+	color: #bb0000;
+}
+#content a:hover, a.current_link:hover {
+	color: #222;
+}
+#content a:active, a.current_link:active {
+	color: #222;
+}
+#footer {
+	display: inline-block;
+	padding: 10px 0px;
+	width: 100%;
+	margin-top: 10px;
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 1px 0 0 0;
+	font-size: .8em;
+	text-align: center;
+}
+#footer #copyright {
+	display: inline-block;
+	width: 100%;
+}
+#footer #email {
+	display: none;
+}
+#footer_links {
+	display: inline-block;
+	width: 100%;
+	margin-top: 10px;
+}
+#footer_links a {
+	margin-left: 7px;
+}
+
+@media (min-width: 600px) {
+	#masthead {
+		width: auto;
+		text-align: left;
+	}
+	#masthead #logo_container {
+		height: 40px;
+		margin-bottom: 0;
+		margin-right: 15px;
+		border-style: solid;
+		border-color: #222;
+		border-width: 0 1px 0 0;
+		float: left;
+		width: auto;
+	}
+	#navigation {
+		width: auto;
+		text-align: left;
+		float: right;
+	}
+	#content {
+		font-size: 1.1em;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+		padding: 0 15px;
+	}
+	#footer #copyright {
+		display: inline;
+		float: left;
+		width: auto;
+	}
+	#footer #email {
+		display: inline;
+	}
+	#footer_links {
+		display: inline;
+		float: right;
+		width: auto;
+		margin: 0;
+	}
+}
+
+@media (min-width: 941px) {
+	#container {
+		width: 840px;
+		padding: 0 2.5%;
+		-webkit-box-shadow: 0px 0px 10px #333;
+		-moz-box-shadow: 0px 0px 10px #333;
+		box-shadow: 0 0 6px #dadada;
+	}
+	#content {
+		font-size: 1.2em;
+		padding: 0 30px;
+	}
+}
+
+/* TODO make font-size scale even in header and look nice */
+@media (min-width: 1440px) {
+	#container {
+		padding: 0 31px;
+		width: 58.33%;
+	}
+	#content {
+		font-size: 1.2em;
+		font-size: 1.35vw;
+	}
+	#footer {
+		padding: 10px 0;
+		padding: .7vw 0;
+		font-size: .8em;
+		font-size: .9vw;
+	}
+}

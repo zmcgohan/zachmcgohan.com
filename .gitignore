@@ -1,0 +1,5 @@
+# no swap files
+*.swo
+*.swo
+# no compiled Python files
+*.pyc

@@ -1,0 +1,62 @@
+@media (min-width: 320px) {
+	.nav_bar {
+		margin-top: 10px;
+		padding-top: 6px;
+		width: 100%;
+		border-style: dotted;
+		border-color: #ccc;
+		border-width: 1px 0 0 0;
+		font-size: .75em;
+	}
+	.nav_bar a {
+		margin: 0 6px;
+	}
+	.post {
+		display: inline-block;
+		width: 100%;
+		font-size: .9em;
+		margin: 15px 0;
+	}
+	.post > p:first-of-type {
+		margin-top: 0;
+	}
+	.post > h1 {
+		margin: 0 0 5px 0;
+		font-size: 1.5em;
+		width: 100%;
+	}
+	.post > h1 a {
+		color: #000000 !important;
+	}
+	.post > h1 a:visited {
+		color: #000000 !important;
+	}
+	.post > h1 a:hover {
+		color: #bb0000 !important;
+	}
+	.post > h1 a:active {
+		color: #bb0000 !important;
+	}
+	.post img {
+		float: left;
+		margin: 0 12px 8px 0;
+		width: 40%;
+	}
+	.post .date_posted {
+		font-size: .8em;
+		float: right;
+		color: #666666;
+	}
+}
+
+@media (min-width: 600px) {
+	.post img {
+		width: 204px;
+	}
+}
+
+@media (min-width: 941px) {
+	.post img {
+		width: 240px;
+	}
+}
