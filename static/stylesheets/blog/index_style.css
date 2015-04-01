@@ -1,0 +1,102 @@
+.post {
+	width: 100%;
+	font-weight: 300;
+	margin: 15px 0;
+}
+.post:first-of-type {
+	margin-top: 4px;
+}
+.post a .post_title {
+	color: #222;
+}
+.post .post_title {
+	display: inline-block;
+	font-weight: 400;
+	font-size: 1.6em;
+	width: 100%;
+	padding: 0;
+	/* margin: 5px 0; */
+	margin: 5px 0 12px 0;
+	border-style: solid;
+	border-width: 0 0 1px 0;
+	border-color: #bb0000;
+	padding-bottom:3px;
+}
+.post .post_title .post_title_arrow {
+	display: inline-block;
+	width:0;
+	visibility: hidden;
+	position: relative;
+	top: 2px;
+	left: 5px;
+	color: #bb0000;
+}
+.post .post_title:hover .post_title_arrow {
+	visibility: visible;
+}
+.post .post_date {
+	display: inline-block;
+	width: 100%;
+	font-weight: 100;
+	font-style: italic;
+	margin: 3px 0;
+}
+.post .post_preview {
+	display: inline-block;
+	width: 100%;
+}
+.post .post_preview p {
+	margin: 8px 0;
+}
+.post .post_view_full {
+	font-size: .9em;
+}
+.nav_bar {
+	display: inline-block;
+	margin-top: 10px;
+	padding-top: 11px;
+	width: 100%;
+	border-style: dotted;
+	border-color: #ccc;
+	border-width: 1px 0 0 0;
+	font-size: .75em;
+}
+.nav_bar a, .nav_bar a:visited {
+	background: #ccc;
+	color: #fafafa !important;
+	border-radius: 5px;
+	font-size: .8em;
+	font-weight: 500;
+	margin: 0 5px;
+	padding: 2px 5px;
+}
+.nav_bar a:hover {
+	background: #777;
+}
+#current_page {
+	background: #777;
+}
+.nav_bar .ellipsis {
+	display:inline;
+	position:relative;
+	color:#aaa; 
+	font-size:1.1em; 
+	top:-2px;
+	line-height: 0;
+}
+.nav_bar #nav_bar_left {
+	float: left;
+}
+.nav_bar #nav_bar_right {
+	float: right;
+}
+@media (max-width: 599px) {
+	/* .nav_bar #nav_bar_left { margin: 6px 0 15px 0; } */
+	.nav_bar #nav_bar_left { margin-bottom: 12px; }
+	/* TODO possibly make nav_bar_right go ABOVE nav_bar_left on small resolution */
+	.nav_bar #nav_bar_left, .nav_bar #nav_bar_right {
+		display: inline-block;
+		text-align: center;
+		width: 100%;
+	}
+}

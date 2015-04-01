@@ -4,7 +4,7 @@
 		<title>Zach McGohan | {{ page_title }}</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link href='http://fonts.googleapis.com/css?family=Roboto:500,400italic,300,500italic,300italic,400' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:500,400italic,300,500italic,300italic,400,100,100italic' rel='stylesheet' type='text/css'>
 		<link rel="icon" type="image/png" href="/static/images/logo.png" />
 		<link rel="stylesheet" type="text/css" href="/static/stylesheets/main_style.css" />
 		{% for style in styles -%}
@@ -25,15 +25,12 @@
 					<span id="header_links">
 						<a href="/" style="margin-left:0"{% if page_title == "About" %} class="current_link"{% endif %}>About</a>
 						<a href="/projects"{% if page_title == "Projects" %} class="current_link"{% endif %}>Projects</a>
-						<a href="/blog"{% if page_title == "Blog" %} class="current_link"{% endif %}>Blog</a>
+						<a href="/blog"{% if page_title[0:4] == "Blog" %} class="current_link"{% endif %}>Blog</a>
 						<a href="mailto:mcgohan.4@osu.edu">Contact</a>
 					</span>
 				</span>
 			</div>
 			<div id="content">
-				<div id="construction_banner" style="text-align:center;font-weight:400;margin-bottom:10px;border-style:dashed;border-color:#bb0000;border-width:3px;background:#ffaaaa;">
-					<p>This website is under construction.</p>
-				</div>
 			{%- block content %}
 			{% endblock %}
 			</div>

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+				{% if post_info %}
+				<h1 id="post_title">{{ post_info['title'] }}</h1>
+				<div id="post_date">
+					<span id="post_text">{{ post_info['time_posted'] }}</span>
+				</div>
+				<div id="post_content">
+					{{ post_info['content']|safe }}
+				</div>
+				{% else %}
+				<h1>Oops!</h1>
+				<p>The requested post was not found.</p>
+				{% endif %}
+{%- endblock %}

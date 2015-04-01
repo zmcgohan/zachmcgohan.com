@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block content %}
-				<h1>{{ post_title }}</h1>
-				<img src="/static/blog/{{ post_identifier }}/images/{{ post_image }}" alt="" />
-				{{ post_content|safe }}
-				<div id="bottom_nav">
-					{{ nav_html|safe }}
-				</div>
-{%- endblock %}

@@ -1,47 +1,33 @@
-from flask import render_template
-from mysite.blog.config import DB_FILE
 import sqlite3
+import time
+from flask import render_template
+from mysite.blog import config
 
-def get_nav_html(post_id):
-    """Gets the next/last post links' HTML if they exist."""
-    conn = sqlite3.connect(DB_FILE)
-    cursor = conn.cursor()
+def get_view(post_id):
+    """Returns the rendered template for the post with string identifier post_id."""
+    # create page title
+    page_title = "Blog | {}".format(post_id)
+    # get post info
+    post_info = get_post_info(post_id)
+    styles = ['/static/stylesheets/blog/post_style.css']
+    return render_template("blog/post.html", page_title=page_title, styles=styles, post_info=post_info)
 
-    nav_html = '<span id="left_link">\n'
-    query = cursor.execute("SELECT * FROM posts WHERE id=? AND visible=1", (post_id - 1,))
-    result = query.fetchone()
-    if result is not None:
-        nav_html += "<a href=\"/blog/{}\">< {}</a>\n".format(result[1], result[4])
-    nav_html += "</span>\n"
-
-    nav_html += '<span id="right_link">\n'
-    query = cursor.execute("SELECT * FROM posts WHERE id=? AND visible=1", (post_id + 1,))
-    result = query.fetchone()
-    if result is not None:
-        nav_html += "<a href=\"/blog/{}\">{} ></a>\n".format(result[1], result[4])
-    nav_html += "</span>\n"
-
-    conn.close()
-
-    return nav_html
-
-def render(post_identifier):
-    """Returns the rendered template for a post."""
-    conn = sqlite3.connect(DB_FILE)
-    cursor = conn.cursor()
-
-    query = cursor.execute("SELECT * FROM posts WHERE string_identifier=?", (post_identifier,))
-    post_info = query.fetchone()
-
-    conn.close()
-
-    post_title = post_info[4]
-    post_image = post_info[5]
-    post_content = post_info[6]
-
-    if post_info is not None:
-        nav_html = get_nav_html(post_info[0])
-        return render_template("blog/blog_post.html", styles=["/static/blog/blog_post_style.css"], page_title="Blog | {}".format(post_title), post_identifier=post_identifier,
-                post_title=post_title, post_image=post_image, post_content = post_content, nav_html=nav_html)
+def get_post_info(post_id):
+    """Returns a dictionary of fields for the post with url_id post_id."""
+    db_connection = sqlite3.connect(config.DB_FILE)
+    db_cursor = db_connection.cursor()
+    db_cursor.execute("SELECT * FROM posts WHERE url_id=?", (post_id,))
+    db_result = db_cursor.fetchone()
+    post_info = None
+    if db_result:
+        post_info = {
+            'url_id': db_result[1],
+            'title': db_result[2],
+            'content': db_result[3],
+            'time_posted': time.strftime('%B %d, %Y', time.localtime(db_result[4])),
+            'category': db_result[5]
+            }
     else:
-        return "Error: Post '{}' not found".format(post_identifier)
+        post_info = None
+    db_connection.close()
+    return post_info

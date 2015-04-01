@@ -33,7 +33,7 @@ a .project_box:active {
 	display: inline-block;
 	margin-top: 5px;
 	width: 100%;
-	font-weight: 500;
+	font-weight: 400;
 	text-align: center;
 }
 .project_box .technologies {

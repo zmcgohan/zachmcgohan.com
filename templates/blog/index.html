@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+				{%- for post in posts %}
+				<div class="post">
+					<a href="/blog/{{ post['url_id'] }}">
+						<h1 class="post_title">
+							{{ post['title'] }}<span class="post_title_arrow">&#8594;</span>
+						</h1>
+					</a>
+					<span class="post_date">{{ post['time_posted'] }}</span>
+					<div class="post_preview">
+						{{ post['content']|safe }}
+					</div>
+					<span class="post_view_full">
+						<a href="/blog/{{ post['url_id'] }}">
+							View full post
+							<span class="link_arrow">&#8594;</span>
+						</a>
+					</span>
+				</div>
+				{% endfor -%}
+				<div class="nav_bar">
+					<span id="nav_bar_left">
+						{% if link_pages[0] > 1 %}<span class="ellipsis">&hellip;</span>{% endif %}
+						{% for page_num in link_pages %}<a href="/blog/page/{{ page_num }}"{% if page_num==cur_page %} id="current_page"{% endif %}>{{ page_num }}</a>{% endfor %}
+						{% if link_pages[-1] < total_pages %}<span class="ellipsis">&hellip;</span>{% endif %}
+					</span>
+					<span id="nav_bar_right">
+						{% if cur_page > 1 %}
+						<a href="/blog/page/1"><< Newest</a>
+						<a href="/blog/page/{{ cur_page-1 }}">< Newer</a>
+						{% endif %}
+						{% if cur_page < total_pages %}
+						<a href="/blog/page/{{ cur_page+1 }}">Older ></a>
+						<a href="/blog/page/{{ total_pages }}">Oldest >></a>
+						{% endif %}
+					</span>
+				</div>
+{%- endblock %}
