@@ -29,11 +29,13 @@ def handle_page_request(page_num):
     elif page_num > total_num_pages: page_num = total_num_pages
     # get projects into list for Jinja2 and navbar string (nav_html)
     project_list = get_projects_on_page(db_cursor, page_num)
-    nav_html = get_nav_html(db_cursor, page_num, total_num_pages)
+    nav_page_nums = get_nav_page_nums(db_cursor, page_num, total_num_pages)
     # close DB connection
     db_connection.close()
     # return rendered page
-    return render_template("projects.html", projects=project_list, nav_html=nav_html, page_title="Projects", styles=["/static/stylesheets/projects_style.css"])
+    styles = ['/static/stylesheets/projects_style.css', '/static/stylesheets/nav_bar_style.css']
+    cur_page = page_num
+    return render_template("projects.html", projects=project_list, page_title="Projects", styles=styles, cur_page=cur_page, nav_page_nums=nav_page_nums)
 
 def get_projects_on_page(db_cursor, page_num):
     """Returns a list of the projects on page #page_num."""
@@ -44,16 +46,13 @@ def get_projects_on_page(db_cursor, page_num):
                                 'link': project_record[4] })
     return project_list
 
-def get_nav_html(db_cursor, current_page, total_num_pages):
-    """Returns the HTML to be placed into the page navigation bar."""
+def get_nav_page_nums(db_cursor, current_page, total_num_pages):
+    """Returns a list of page numbers to be linked to in the nav bar."""
     total_pages = (db_cursor.execute("SELECT Count(*) FROM projects").fetchone())[0] / PROJECTS_PER_PAGE + 1
-    nav_html = ''
-    for i in xrange(total_num_pages):
-        if i+1 != current_page: # not current page -- regular link
-            nav_html += '<a href="/projects/page/{0}">{0}</a>'.format(i+1)
-        else: # current page -- black bolded link
-            nav_html += '<a href="/projects/page/{0}" style="font-weight:500;color:#222;">{0}</a>'.format(i+1)
-    return nav_html
+    pages = []
+    for i in xrange(1, total_pages+1):
+        pages.append(i)
+    return pages
 
 def create_database():
     """Creates the database file PROJECTS_DB_FILE and sets up the `projects` table."""

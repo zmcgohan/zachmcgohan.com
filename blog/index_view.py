@@ -6,8 +6,11 @@ from flask import render_template
 from mysite.blog import config
 from math import ceil
 
+from mysite.blog import post_parsing
+
 POSTS_PER_PAGE = 5
 TOTAL_PAGE_LINKS = 5
+POST_SNIPPET_MAX_LENGTH = 3
 
 def get_view(page_num):
     """Returns the rendered template."""
@@ -23,7 +26,7 @@ def get_view(page_num):
     # get posts
     # TODO make categories work
     posts = get_posts(0, page_num)
-    styles = ['/static/stylesheets/blog/index_style.css']
+    styles = ['/static/stylesheets/blog/index_style.css', '/static/stylesheets/nav_bar_style.css']
     return render_template("blog/index.html", page_title=page_title, styles=styles, posts=posts, cur_page=page_num, total_pages=total_pages, link_pages=link_pages)
 
 def get_posts(category, page_num):
@@ -39,7 +42,7 @@ def get_posts(category, page_num):
         posts.append({
             'url_id': post[1],
             'title': post[2],
-            'content': post[3],
+            'content': post_parsing.html_parse(post[3], POST_SNIPPET_MAX_LENGTH),
             'time_posted': time.strftime('%B %d, %Y', time.localtime(post[4])),
             'category': post[5]
             })

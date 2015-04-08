@@ -43,10 +43,9 @@ def create_test_posts(cursor):
     for i in xrange(NUM_TEST_POSTS):
         post_content = ''
         for j in xrange(5):
-            post_content += '<p>'
             for k in xrange(random.randint(4,10)):
                 post_content += random.choice(sentences) + ' '
-            post_content += '</p>'
+            post_content += '\n'
         rand_suffix = random.randint(1,10000)
         title_rand = random.randint(0,len(titles)-1)
         post_title = titles[title_rand]

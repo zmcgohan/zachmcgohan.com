@@ -1,20 +1,5 @@
 {% extends "base.html" %}
 {% block content %}
-				<style>
-					.nav_bar {
-						display: inline-block;
-						margin-top: 10px;
-						padding-top: 6px;
-						width: 100%;
-						border-style: dotted;
-						border-color: #ccc;
-						border-width: 1px 0 0 0;
-						font-size: .75em;
-					}
-					.nav_bar a {
-						margin: 0 6px;
-					}
-				</style>
 				{% for proj in projects %}
 				<a href="{{ proj["link"] }}">
 					<span class="project_box">
@@ -25,6 +10,8 @@
 				</a>
 				{% endfor %}
 				<div class="nav_bar">
-					{{ nav_html|safe }}
+					{%- for page_num in nav_page_nums -%}
+					<a href="/projects/page/{{ page_num }}"{% if cur_page == page_num %} id="current_page"{% endif %}>{{ page_num }}</a>
+					{%- endfor -%}
 				</div>
 {%- endblock %}

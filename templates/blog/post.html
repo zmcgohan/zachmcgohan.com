@@ -12,4 +12,16 @@
 				<h1>Oops!</h1>
 				<p>The requested post was not found.</p>
 				{% endif %}
+				<div class="nav_bar">
+					{%- if last_post %}
+					<span id="nav_bar_left">
+						<a href="/blog/{{ last_post['url_id'] }}">&#8592; {{ last_post['title'] }}</a>
+					</span>
+					{%- endif %}
+					{%- if next_post %}
+					<span id="nav_bar_right">
+						<a href="/blog/{{ next_post['url_id'] }}">{{ next_post['title'] }} &#8594;</a>
+					</span>
+					{%- endif %}
+				</div>
 {%- endblock %}

@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block content %}
+				<style>
+					#table_header {
+						display: inline-block;
+						margin: 12px 0 6px 0;
+						width: 100%;
+						font-weight: 500;
+					}
+					#post_title_head, #actions_head {
+						display: inline-block;
+						float: left;
+						border-style: solid;
+						border-color: #bb0000;
+						border-width: 0 0 2px 0;
+						padding: 0 0 2px 2px;
+						-webkit-box-sizing: border-box;
+						-moz-box-sizing: border-box;
+						box-sizing: border-box;
+					}
+					#post_title_head {
+						width: 79%;
+						margin-right: 1%;
+					}
+					#actions_head {
+						width: 20%;
+					}
+					#posts_table {
+						width: 100%;
+						text-align: left;
+						border-collapse: collapse;
+					}
+					#posts_table td {
+						padding: 7px 5px;
+					}
+					#posts_table tr:hover {
+						background: #efefef;
+					}
+					.post_title_col {
+						width: 80%;
+					}
+					.actions_col {
+						width: 20%;
+					}
+				</style>
+				{% if user_verified %}
+				<h1 style="font-size:1.3em;font-weight:400;text-align:center;margin:5px 0;">Manage Blog Posts</h1>
+				<span id="table_header">
+					<span id="post_title_head">Blog Post</span>
+					<span id="actions_head">Actions</span>
+				</span>
+				<table id="posts_table">
+					{% for post in posts %}
+					<tr>
+						<td class="post_title_col">{{ post['title'] }}</td>
+						<td class="actions_col"></td>
+					</tr>
+					{% endfor %}
+				</table>
+				<div class="nav_bar">
+					{%- for page_num in page_nums -%}
+					<a href="/blog/manage/page/{{ page_num }}"{% if page_num == cur_page %} id="current_page"{% endif %}>{{ page_num }}</a>
+					{%- endfor -%}
+				</div>
+				{% else %}
+				{% if wrong_pw_submission %}
+				<p style="text-align:center"><strong>Error: </strong> Incorrect password. Please try again.</p>
+				{% else %}
+				<p style="text-align:center">You are currently unverified. Please enter this blog's password.</p>
+				{% endif %}
+				<form action="/blog/manage/verify" method="POST">
+					<table style="margin:0 auto;font-size: .8em;">
+						<tr>
+							<td style="padding-right: 10px;">Blog Password: </td>
+							<td><input type="password" maxlength="20" name="password" id="password" /></td>
+						</tr>
+						<tr>
+							<td colspan="2" style="text-align:right;padding-top:6px"><input type="submit" value="Log In" /></td>
+						</tr>
+					</table>
+				</form>
+				{% endif %}
+{%- endblock %}

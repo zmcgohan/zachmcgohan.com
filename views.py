@@ -2,7 +2,7 @@ from mysite import app
 from flask import render_template, request
 
 from mysite.projects import projects_handler
-from mysite import blog; import blog.index_view, blog.post_view
+from mysite import blog; import blog.index_view, blog.post_view, blog.manage_view
 
 @app.route("/")
 def render_index():
@@ -19,6 +19,17 @@ def render_projects(page_num):
 @app.route("/blog/page/<int:page_num>")
 def render_blog_index(page_num):
     return blog.index_view.get_view(page_num)
+
+# log in to blog
+@app.route("/blog/manage/verify", methods=['POST'])
+def verify_blog_manager():
+    return blog.manage_view.verify_manager()
+
+# manage blog
+@app.route("/blog/manage", defaults={'page_num': 1}, methods=['GET'])
+@app.route("/blog/manage/page/<int:page_num>")
+def render_blog_manage(page_num):
+    return blog.manage_view.get_view(page_num)
 
 # blog post
 @app.route("/blog/<string:post_id>")
