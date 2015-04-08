@@ -3,3 +3,6 @@
 *.swo
 # no compiled Python files
 *.pyc
+# some personal files
+static/resume.pdf
+static/complete_graph.html
