@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+				<div id="submitting_cover">Saved. &#10003;</div>
+				<div id="page_title_container">
+					<span id="page_title">Edit Blog Post</span>
+				</div>
+				<form action="" method="POST" id="edit_post_form">
+					<input type="text" name="post_title" id="post_title" placeholder="Post Title"{% if post_info is not none %} value="{{ post_info['title'] }}"{% endif %} />
+					<fieldset id="included_files">
+						<legend>Include Files</legend>
+						<div id="upload_file_button_container"><a href="#">Upload File</a></div>
+						<p>No uploaded files.</p>
+					</fieldset>
+					<textarea id="post_content" name="post_content" placeholder="Post content goes here...">{% if post_info is not none %}{{ post_info['content'] }}{% endif %}</textarea>
+					<input type="hidden" name="url_id" value="{{ post_info['url_id'] }}" />
+					<input type="hidden" name="request_type" value="edit_post" />
+					<div id="bottom_button_container"><button type="button" id="view_button">View Draft</button><input type="submit" value="Save Post" id="save_button" /></div>
+				</form>
+{%- endblock %}

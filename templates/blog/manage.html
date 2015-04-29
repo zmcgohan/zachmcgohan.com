@@ -1,50 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-				<style>
-					#table_header {
-						display: inline-block;
-						margin: 12px 0 6px 0;
-						width: 100%;
-						font-weight: 500;
-					}
-					#post_title_head, #actions_head {
-						display: inline-block;
-						float: left;
-						border-style: solid;
-						border-color: #bb0000;
-						border-width: 0 0 2px 0;
-						padding: 0 0 2px 2px;
-						-webkit-box-sizing: border-box;
-						-moz-box-sizing: border-box;
-						box-sizing: border-box;
-					}
-					#post_title_head {
-						width: 79%;
-						margin-right: 1%;
-					}
-					#actions_head {
-						width: 20%;
-					}
-					#posts_table {
-						width: 100%;
-						text-align: left;
-						border-collapse: collapse;
-					}
-					#posts_table td {
-						padding: 7px 5px;
-					}
-					#posts_table tr:hover {
-						background: #efefef;
-					}
-					.post_title_col {
-						width: 80%;
-					}
-					.actions_col {
-						width: 20%;
-					}
-				</style>
+			{#- USER IS VERIFIED -- SHOW MANAGER PAGE -#}
 				{% if user_verified %}
-				<h1 style="font-size:1.3em;font-weight:400;text-align:center;margin:5px 0;">Manage Blog Posts</h1>
+				<div id="new_post_container"><a href="/blog/manage/new_post">Create New Post</a></div>
+				<h1 style="font-size:1.3em;font-weight:400;text-align:center;margin:0;">Manage Blog Posts</h1>
 				<span id="table_header">
 					<span id="post_title_head">Blog Post</span>
 					<span id="actions_head">Actions</span>
@@ -52,8 +11,8 @@
 				<table id="posts_table">
 					{% for post in posts %}
 					<tr>
-						<td class="post_title_col">{{ post['title'] }}</td>
-						<td class="actions_col"></td>
+						<td class="post_title_col"><a href="/blog/{{ post['url_id'] }}">{{ post['title'] }}</a></td>
+						<td class="actions_col"><a href="/blog/manage/edit/{{ post['url_id'] }}">Edit</a><a href="#" class="hide_show_link">{% if post['visibility']==1 %}Hide{% else %}Show{% endif %}</a></td>
 					</tr>
 					{% endfor %}
 				</table>
@@ -63,6 +22,7 @@
 					{%- endfor -%}
 				</div>
 				{% else %}
+			{#- USER IS --NOT-- VERIFIED -- SHOW LOGIN PAGE -#}
 				{% if wrong_pw_submission %}
 				<p style="text-align:center"><strong>Error: </strong> Incorrect password. Please try again.</p>
 				{% else %}

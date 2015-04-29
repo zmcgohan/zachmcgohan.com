@@ -23,9 +23,10 @@ def get_view(page_num):
     user_verified = user_is_verified()
     wrong_pw_submission = request.args.get('err') == '1' # if user already submitted wrong password to form, then True; else False
     page_nums = get_page_nums(total_num_pages, page_num)
-    styles = ['/static/stylesheets/nav_bar_style.css']
+    styles = ['/static/stylesheets/nav_bar_style.css', '/static/stylesheets/blog/manage_style.css']
+    scripts = [ '/static/scripts/jquery.js', '/static/blog/scripts/manage_scripts.js' ]
     db_connection.close()
-    return render_template("blog/manage.html", page_title=page_title, styles=styles, user_verified=user_verified, wrong_pw_submission=wrong_pw_submission, posts=posts, page_nums=page_nums, cur_page=page_num)
+    return render_template("blog/manage.html", page_title=page_title, styles=styles, scripts=scripts, user_verified=user_verified, wrong_pw_submission=wrong_pw_submission, posts=posts, page_nums=page_nums, cur_page=page_num)
 
 def get_posts(db_cursor, page_num):
     """Gets the posts for the page specified by page_num."""

@@ -1,0 +1,62 @@
+#new_post_container {
+	width: 100%;
+	text-align: right;
+	margin-bottom: 8px;
+}
+#table_header {
+	display: inline-block;
+	margin: 12px 0 6px 0;
+	width: 100%;
+	font-weight: 500;
+}
+#post_title_head, #actions_head {
+	display: inline-block;
+	float: left;
+	border-style: solid;
+	border-color: #bb0000;
+	border-width: 0 0 2px 0;
+	padding: 0 0 2px 2px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#post_title_head {
+	width: 79%;
+	margin-right: 1%;
+}
+#actions_head {
+	width: 20%;
+}
+#posts_table {
+	width: 100%;
+	text-align: left;
+	border-collapse: collapse;
+}
+#posts_table tr:hover {
+	background: #efefef;
+}
+.post_title_col {
+	width: 80%;
+	padding: 7px 5px;
+}
+.post_title_col a, .post_title_col a:visited {
+	color: #222 !important;
+}
+.post_title_col a:hover, .post_title_col a:active {
+	color: #bb0000 !important;
+}
+.actions_col {
+	width: 20%;
+}
+.actions_col a, .actions_col a:visited, #new_post_container a, #new_post_container a:visited {
+	background: #ccc;
+	color: #fafafa !important;
+	border-radius: 5px;
+	font-size: .65em;
+	font-weight: 500;
+	margin: 0 5px;
+	padding: 2px 5px;
+}
+.actions_col a:hover, .actions_col a:active, #new_post_container a:hover, #new_post_container a:active {
+	background: #777;
+}
